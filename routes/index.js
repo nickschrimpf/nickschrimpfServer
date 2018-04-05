@@ -1,10 +1,22 @@
 var express = require('express');
 var router = express.Router();
+const monk = require('monk');
+
+var db = require('monk')('localhost/contactApp');
+var contacts = db.get('contacts');
+
 require('dotenv').config()
 /* GET home page. */
-router.get('/contact/', function(req, res, next) {
-    console.log(req.body)
-  res.json({data:req.body});
+
+
+
+router.post('/contact/', function(req, res, next) {
+    contacts.insert({
+        contact:req.body.contact,
+        Date: new Date()
+    }).then (function(contacts){ 
+    })
+    res.sendStatus(200);
 });
 
 module.exports = router;
