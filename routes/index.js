@@ -3,7 +3,7 @@ var router = express.Router();
 const monk = require('monk');
 
 // var db = require('monk')('localhost/contactApp');
-var db = require('monk')('MONGODB_URI');
+var db = require('monk')('ContactsDB');
 var contacts = db.get('contacts');
 
 require('dotenv').config()
